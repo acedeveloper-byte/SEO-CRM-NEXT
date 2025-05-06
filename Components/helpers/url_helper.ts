@@ -1,3 +1,9 @@
+//
+export const BaseURL = "http://192.168.1.4:5000/"
+// export const BaseURLLIVE = ""
+
+
+
 //REGISTER
 export const POST_FAKE_REGISTER = "/post-fake-register";
 

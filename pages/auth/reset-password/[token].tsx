@@ -23,7 +23,6 @@ import { useRouter } from 'next/router';
 const PassResetBasic = (props:  any) => {
     const dispatch: any = useDispatch();
     const router: any = useRouter();
-        console.log("props:" , props)
     const validation: any = useFormik({
         // enableReinitialize : use this flag when initial values needs to be changed
         enableReinitialize: true,
