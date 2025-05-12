@@ -3,25 +3,24 @@ import Head from "next/head";
 // import ReactForm from "../../Components/pages_componets/category/form";
 // import Categorytable from "./../../Components/pages_componets/category/categorytable";
 import Layout from "@common/Layout";
-import ReactForm from "Components/pages_component/blog/form";
 import BlogdataTable from "Components/pages_component/blog/blogtable";
+import ReactForm from "Components/pages_component/sites/form";
 
-const Index_Category = () => {
+const AllSites = () => {
     return (
         <React.Fragment>
             <Head>
-                <title>Index_Category | Lavya -Admin </title>
+                <title>AllSites | Ace Digital Solutions </title>
             </Head>
             <div className="page-content">
                 <ReactForm />
-                <BlogdataTable />
-
+          
             </div>
         </React.Fragment>
     );
 };
 
-Index_Category.getLayout = (page: ReactElement) => {
+AllSites.getLayout = (page: ReactElement) => {
     return <Layout>{page}</Layout>;
 };
-export default Index_Category;
+export default AllSites;

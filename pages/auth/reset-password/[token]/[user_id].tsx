@@ -20,9 +20,10 @@ import authEffect from "@assets/images/effect-pattern/auth-effect.png";
 import { createSelector } from 'reselect';
 import { useRouter } from 'next/router';
 
-const PassResetBasic = (props:  any) => {
+const PassResetBasic = (props: any) => {
     const dispatch: any = useDispatch();
     const router: any = useRouter();
+    console.log("props.token:", props)
     const validation: any = useFormik({
         // enableReinitialize : use this flag when initial values needs to be changed
         enableReinitialize: true,
@@ -34,7 +35,7 @@ const PassResetBasic = (props:  any) => {
             password: Yup.string().required("Please Enter Your password"),
         }),
         onSubmit: (values) => {
-            dispatch(userForgetPassword(values, props.history,router,   props.token));
+            dispatch(userForgetPassword(values, router, props.token , props.user_id));
         }
     });
 
@@ -89,7 +90,7 @@ const PassResetBasic = (props:  any) => {
                                             <Card className="mb-0 border-0 py-3 shadow-none">
                                                 <Card.Body className="px-0 p-sm-5 m-lg-4">
                                                     <div className="text-center mt-2">
-                                                        <h5 className="text-primary fs-20">Forgot Password?</h5>
+                                                        <h5 className="text-primary fs-20">Change Password To access your account</h5>
                                                         <p className="text-muted mb-4">Reset password with Ace digital Solutions</p>
                                                         <div className="display-5 mb-4 text-danger">
                                                             <i className="bi bi-lock"></i>
@@ -142,7 +143,7 @@ const PassResetBasic = (props:  any) => {
                                                             </div>
                                                         </Form>
                                                     </div>
-                                             
+
                                                 </Card.Body>
                                             </Card>
                                         </Col>
@@ -159,16 +160,19 @@ const PassResetBasic = (props:  any) => {
 
 PassResetBasic.getLayout = function getLayout(page: any) {
     return (
-      <NonAuthLayout>
-        {page}
-      </NonAuthLayout>
+        <NonAuthLayout>
+            {page}
+        </NonAuthLayout>
     )
 };
 
-export  const  getServerSideProps = async (  context  : any) =>{
-    const  { token  } = context.query
-    return  {
-            props : {token : token}
+export const getServerSideProps = async (context: any) => {
+    const { token, user_id } = context.query
+    return {
+        props: {
+            token: token,
+            user_id: user_id
         }
+    }
 }
 export default PassResetBasic;

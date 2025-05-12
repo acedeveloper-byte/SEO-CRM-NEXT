@@ -1,5 +1,8 @@
 //
-export const BaseURL = "http://192.168.1.4:5000/"
+export const BaseURL = "http://192.168.1.4:5000"
+export const URL_IMAGE = "http://192.168.1.4:5000/uploads/"
+export const MAILER_LINK = "http://192.168.1.4:3000/auth/reset-password/"
+
 // export const BaseURLLIVE = ""
 
 
@@ -49,3 +52,26 @@ export const GET_ALL_DATA = "/all-data";
 export const GET_MONTHLY_DATA = "/monthly-data";
 export const GET_HALFYEARLY_DATA = "/halfyearly-data";
 export const GET_YEARLY_DATA = "/yearly-data";
+
+
+/* SEO-BLOG-URL */
+export const CREATE_BLOG_DATA = "/blog/create-new-blog";
+export const GET_BLOG_DATA = "/blog/get-all-blogs";
+
+/* SEO-BLOG-URL */
+
+/* SEO-SITES-URL */
+export const CREATE_SITES = "/sites/create-new-site";
+export const GET_SITES_DATA = "/sites/get-all-sites";
+
+/* SEO-BLOG-URL */
+
+
+
+/* SEO-USER-URL */
+export const GET_USER_DATA = "/auth/v1/fetch-user";
+export const CREATE_USER = "/auth/v1/add-new-user";
+export const LOGIN_USER = "/auth/v1/login-user";
+export const RESET_USER = "/auth/v1//reset-password/";
+/* SEO-BLOG-URL */
+

@@ -20,6 +20,9 @@ import LoginReducer from "./auth/login/reducer";
 import AccountReducer from "./auth/register/reducer";
 import ForgetPasswordReducer from "./auth/forgetpwd/reducer";
 import ProfileReducer from "./auth/profile/reducer";
+import blogSlice from "../slices/blog/reducer"
+import sitesSlice from "../slices/sites/reducer"
+import inSideUserSlice from "../slices/user/reducer"
 
 const combinedReducer = combineReducers({
     Layout: LayoutReducer,
@@ -31,7 +34,10 @@ const combinedReducer = combineReducers({
     ForgetPassword: ForgetPasswordReducer,
     Profile: ProfileReducer,
     Team: teamslice,
-    Dashboard: dashboardslice
+    Dashboard: dashboardslice,
+    Blog : blogSlice,
+    Sites:sitesSlice,
+    inUser:inSideUserSlice
 });
 
 const reducer = (state: any, action: AnyAction) => {

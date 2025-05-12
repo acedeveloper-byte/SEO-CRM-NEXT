@@ -31,7 +31,6 @@ const Login = (props: any) => {
     const [passwordtype, setPasswordtype] = useState<boolean>(true)
     const [userLogin, setUserLogin] = useState<any>([]);
 
-
     const selectLayoutState = (state: any) => state;
     const selectLayoutProperties = createSelector(
         selectLayoutState,
@@ -48,7 +47,7 @@ const Login = (props: any) => {
 
     useEffect(() => {
         if (user && user) {
-            console.log("user",user);
+            console.log("user", user);
             setUserLogin({
                 email: user.email,
                 password: user.password
@@ -70,12 +69,13 @@ const Login = (props: any) => {
         }),
         onSubmit: (values) => {
             setLoading(true)
-            dispatch(loginUser(values,router));
+            dispatch(loginUser(values, router));
         }
     });
 
 
     useEffect(() => {
+       
         setTimeout(() => {
             dispatch(resetLoginFlag());
             setLoading(false)
@@ -83,7 +83,7 @@ const Login = (props: any) => {
     }, [dispatch, error]);
 
     const signIn = (res: any, type: any) => {
-       
+
     };
 
     //handleGoogleLoginResponse
@@ -98,6 +98,8 @@ const Login = (props: any) => {
     const facebookResponse = (response: any) => {
         signIn(response, "facebook");
     };
+
+
 
     return (
         <React.Fragment>
@@ -171,9 +173,7 @@ const Login = (props: any) => {
                                                             </div>
 
                                                             <div className="mb-3">
-                                                                <div className="float-end">
-                                                                    <Link href="/auth/forget-password" className="text-muted">Forgot password?</Link>
-                                                                </div>
+                                                           
                                                                 <Form.Label className="form-label" htmlFor="password-input">Password</Form.Label>
                                                                 <div className="position-relative auth-pass-inputgroup mb-3">
                                                                     <Form.Control type={passwordtype ? "password" : "text"} className="form-control pe-5 password-input" placeholder="Enter password" id="password-input"
@@ -230,9 +230,9 @@ const Login = (props: any) => {
 
 Login.getLayout = function getLayout(page: any) {
     return (
-      <NonAuthLayout>
-        {page}
-      </NonAuthLayout>
+        <NonAuthLayout>
+            {page}
+        </NonAuthLayout>
     )
 };
 

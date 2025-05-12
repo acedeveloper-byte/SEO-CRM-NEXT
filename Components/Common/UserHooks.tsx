@@ -6,7 +6,7 @@ const useProfile = () => {
   const [loading, setLoading] = useState(userProfileSession ? false : true);
   const [userProfile, setUserProfile] = useState(
     userProfileSession ? userProfileSession : null
-  );
+    );
 
   useEffect(() => {
     const userProfileSession = getLoggedinUser();
@@ -15,7 +15,7 @@ const useProfile = () => {
   }, []);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 
 
-  return { userProfile, loading};
+  return { userProfile, loading };
 };
 
 export { useProfile };

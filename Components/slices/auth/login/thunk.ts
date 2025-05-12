@@ -1,5 +1,5 @@
 
-import { BaseURL } from 'Components/helpers/url_helper';
+import { BaseURL, LOGIN_USER } from 'Components/helpers/url_helper';
 import { loginSuccess, logoutUserSuccess, apiError, reset_login_flag } from './reducer';
 import axios from "axios";
 
@@ -11,7 +11,7 @@ export const loginUser = (user: any, router : any) => async (dispatch: any) => {
     let response:any
     var options = {
       method: 'POST',
-      url: `${BaseURL}auth/v1/login-user`,
+      url: `${BaseURL}${LOGIN_USER}`,
       headers: {'Content-Type': 'application/json', },
       data: {email: user.email, password: user.password}
     };

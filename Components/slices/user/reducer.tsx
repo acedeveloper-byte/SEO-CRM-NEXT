@@ -4,11 +4,11 @@ export const initialState = {
   loading: false,
   apiError: "",
   apiSuccess: "",
-  blogdata :  []
+  inSideUserdata :  []
 };
 
-const blogSlice = createSlice({
-  name: "blog",
+const inSideUserSlice = createSlice({
+  name: "inSideUser",
   initialState,
   reducers: {
     setApiError(state, action) {
@@ -23,8 +23,8 @@ const blogSlice = createSlice({
       state.loading = action.payload;
     },
 
-    setsuccessblogdata ( state , action) {
-      state.blogdata = action.payload;
+    setsuccessinSideUserdata ( state , action) {
+      state.inSideUserdata = action.payload;
       state.loading = false;
     }
   },
@@ -32,6 +32,8 @@ const blogSlice = createSlice({
 
 export const { 
     setApiError, 
-    setApiSuccess, setLoading , setsuccessblogdata } = blogSlice.actions;
+    setApiSuccess, setLoading , setsuccessinSideUserdata } = inSideUserSlice.actions;
 
-export default blogSlice.reducer;
+export default inSideUserSlice.reducer;
+
+
