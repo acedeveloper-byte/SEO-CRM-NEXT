@@ -241,7 +241,8 @@ const ReactForm = () => {
                                             value={formik.values.blog_url}
                                             onChange={(e: any) => {
                                                 const replacetext = e.target.value.replaceAll(" ", "-")
-                                                formik.setFieldValue("blog_url", replacetext)
+                                                var a =  replacetext.toLowerCase()
+                                                formik.setFieldValue("blog_url", a)
                                             }}
                                             onBlur={formik.handleBlur}
                                             isInvalid={formik.touched.blog_url && !!formik.errors.blog_url}
