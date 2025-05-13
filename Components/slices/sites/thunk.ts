@@ -9,9 +9,7 @@ export const SubmitSites = (values: any) => async (dispatch: any) => {
     form.append("site_name", values.site_name);
     form.append("site_tfn", values.site_tfn);
     form.append("site_status", values.status);
-    form.append("site_owner", values.site_owner);
     form.append("file", values.site_logo);
-        console.log(values)
 
     const options = {
         method: 'POST',

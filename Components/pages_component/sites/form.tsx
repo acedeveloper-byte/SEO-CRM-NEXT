@@ -16,14 +16,12 @@ const form = () => {
         initialValues: {
             site_name: "",
             site_tfn: "",
-            site_owner: "",
             site_logo: "",
             status: true, // toggle switch for active/inactive
         },
         validationSchema: Yup.object({
             site_name: Yup.string().required("Site name is required."),
             site_tfn: Yup.string().required("Site TFN is required."),
-            site_owner: Yup.string().required("Site owner is required."),
             site_logo: Yup.mixed().required("Please upload a site logo."),
             status: Yup.boolean(),
         }),
@@ -85,31 +83,7 @@ const form = () => {
                                 </Form.Group>
                             </Col>
 
-                            <Col md={6}>
-                                <Form.Group>
-                                    <Form.Label htmlFor="site_owner">Site Owner</Form.Label>
-                                    <Form.Control
-                                        as="select"
-                                        name="site_owner"
-                                        id="site_owner"
-                                        value={formik.values.site_owner}
-                                        onChange={formik.handleChange}
-                                        onBlur={formik.handleBlur}
-                                        isInvalid={formik.touched.site_owner && !!formik.errors.site_owner}
-                                    >
-                                        <option value="">-- Select Site Owner --</option>
-                                        {inSideUserdata.map((item: any) => {
-                                            return (
-                                                <option value={item._id}>{item.user_name}</option>
-
-                                            )
-                                        })}
-                                    </Form.Control>
-                                    <Form.Control.Feedback type="invalid">
-                                        {formik.errors.site_owner}
-                                    </Form.Control.Feedback>
-                                </Form.Group>
-                            </Col>
+                          
 
                             <Col md={6}>
                                 <Form.Group>
