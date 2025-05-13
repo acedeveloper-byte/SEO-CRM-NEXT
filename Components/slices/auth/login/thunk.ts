@@ -22,13 +22,19 @@ export const loginUser = (user: any, router : any) => async (dispatch: any) => {
        localStorage.setItem("token", JSON.stringify(response.token));
        router.push('/dashboard' , undefined,{ shallow:  true}   )
        dispatch(loginSuccess(response.user));
+                   dispatch(resetLoginFlag());
+       
        console.log(response);
       } 
     }).catch(function (error) {
       console.error(error);
+                   dispatch(resetLoginFlag());
+
     });
    } catch (error) {
-     dispatch(apiError(error));
+                   dispatch(resetLoginFlag());
+     
+    dispatch(apiError(error));
    }
 };
 
