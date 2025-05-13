@@ -101,7 +101,7 @@ const Usertable = () => {
         <Col xl={12}>
             <Card>
                 <Card.Header className="align-items-center d-flex mb-n2">
-                    <h4 className="card-title mb-0 flex-grow-1">Blog data</h4>
+                    <h4 className="card-title mb-0 flex-grow-1">User data</h4>
                     <div className="flex-shrink-0">
                         <Dropdown className="card-header-dropdown">
                             <Dropdown.Toggle
