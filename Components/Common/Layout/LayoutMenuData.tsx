@@ -22,6 +22,7 @@ const Navdata = () => {
             e.target.classList.add("active");
         }
     }
+    
 
     useEffect(() => {
         document.body.classList.remove("twocolumn-panel");
@@ -40,11 +41,11 @@ const Navdata = () => {
             document.body.classList.add("twocolumn-panel");
         }
 
-        if (typeof window !== "undefined" && localStorage.getItem("authUser")) {
+        if (localStorage.getItem("authUser")) {
             const currUser = JSON.parse(localStorage.getItem("authUser") || "{}");
             setLoggedIn(currUser);
         }
-    }, [isCurrentState]);
+    }, [isCurrentState ]);
 
     const adminMenuItems = [
         { label: "Menu", isHeader: true },
@@ -170,7 +171,7 @@ const Navdata = () => {
         },
     ];
 
-    const menuItems = loggedIn?.role === "ADMIN" || "SUPER_ADMIN"
+    const menuItems = loggedIn?.role === "ADMIN"|| loggedIn?.role === "SUPER_ADMIN"
         ? adminMenuItems
         : loggedIn?.role === "SEO_EXECUTIVE"
         ? seoExecutiveMenuItems
