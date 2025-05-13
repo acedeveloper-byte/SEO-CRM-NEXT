@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from "react";
+import React, { useState, useCallback, useEffect, useRef } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FormikProvider, useFormik } from "formik";
@@ -13,6 +13,9 @@ const ReactForm = () => {
     const dispatch: any = useDispatch();
     const [active, setActive] = useState<boolean>(false);
     const [user, setuser] = useState<any>({})
+     const editorRef = useRef<any>();
+  const [editor, setEditor] = useState(false);
+  const { CKEditor, ClassicEditor }: any = editorRef.current || {};
     const { sitesdata } = useSelector((state: any) => ({
         sitesdata: state.Sites.sitesdata,
     }));
@@ -65,6 +68,11 @@ const ReactForm = () => {
             curr_user = JSON.parse(localStorage.getItem("authUser") || "{}");
             setuser(curr_user)
         }
+          editorRef.current = {
+      CKEditor: require("@ckeditor/ckeditor5-react").CKEditor,
+      ClassicEditor: require("@ckeditor/ckeditor5-build-classic"),
+    };
+    setEditor(true);
     }, [])
 
     return (
@@ -130,7 +138,9 @@ const ReactForm = () => {
                                             onChange={formik.handleChange}
                                             onBlur={formik.handleBlur}
                                             isInvalid={formik.touched.siteId && !!formik.errors.siteId}
+                                                   
                                         >
+                                                   <option value={""}>{"---Select Site---"}</option>
                                             {sitesdata.map((item: any) => {
 
                                                 return (
@@ -280,27 +290,39 @@ const ReactForm = () => {
                                     </Form.Group>
                                 </Col>
 
-                                <Col md={6}>
-                                    <Form.Group>
-                                        <Form.Label htmlFor="blog_description">Blog Description</Form.Label>
-                                        <Form.Control
-                                            as="textarea"
-                                            rows={2}
-                                            name="blog_description"
-                                            id="blog_description"
-                                            placeholder="Enter Blog Description"
-                                            value={formik.values.blog_description}
-                                            onChange={formik.handleChange}
-                                            onBlur={formik.handleBlur}
-                                            isInvalid={formik.touched.blog_description && !!formik.errors.blog_description}
-                                        />
-                                        <Form.Control.Feedback type="invalid">
-                                            {formik.errors.blog_description}
-                                        </Form.Control.Feedback>
-                                    </Form.Group>
-                                </Col>
 
-                                <Col md={6} className="mt-3" style={{ justifyContent: "center", alignItems: "center", display: "flex", paddingTop: 20 }}>
+                            </Row>
+                               <Col>
+                <div>
+                  <Form.Label htmlFor="name" className="form-label">
+                    BLog Description
+                  </Form.Label>
+                  {editor ? (
+                    <CKEditor
+                      editor={ClassicEditor}
+                      data={formik.values.blog_description}
+                      onReady={(editor: any) => {
+                        // You can store the "editor" and use when it is needed.
+                      }}
+                      onChange={(event: any, editor: any) => {
+                        const data = editor.getData();
+
+                        formik.setFieldValue("blog_description", data);
+                      }}
+                    />
+                  ) : (
+                    <p>ckeditor5</p>
+                  )}
+                  {formik.touched.blog_description &&
+                  formik.errors.blog_description ? (
+                    <Form.Control.Feedback type="invalid">
+                      {formik.errors.blog_description}
+                    </Form.Control.Feedback>
+                  ) : null}
+                </div>
+              </Col>
+
+                                <Col  className="mt-3" style={{ justifyContent: "center", alignItems: "center", display: "flex", paddingTop: 20 }}>
                                     <Button
                                         variant="secondary"
                                         type="submit"
@@ -310,8 +332,6 @@ const ReactForm = () => {
                                         Save
                                     </Button>
                                 </Col>
-                            </Row>
-
                         </div>
                     </Form>
                 </Card>

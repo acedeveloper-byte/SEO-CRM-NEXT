@@ -11,7 +11,7 @@ export const SubmitBlog = (formData: any) => async (dispatch: any) => {
     form.append("meta_description", formData.meta_description);
     form.append("category", formData.category);
     form.append("blog_url", formData.blog_url);
-    form.append("blog_image_tag", formData.image_tag);
+    form.append("blog_image_tag", formData.blog_image_tag);
     form.append("title_tag_h1", formData.title_tag_h1);
     form.append("blog_description", formData.blog_description);
     form.append("file", formData.blog_images);
