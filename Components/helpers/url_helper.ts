@@ -1,7 +1,10 @@
 //
-export const BaseURL = "http://192.168.1.4:5000"
-export const URL_IMAGE = "http://192.168.1.4:5000/uploads/"
-export const MAILER_LINK = "http://192.168.1.4:3000/auth/reset-password/"
+// export const BaseURL = "http://192.168.1.4:5000"
+// export const URL_IMAGE = "http://192.168.1.4:5000/uploads/"
+// export const MAILER_LINK = "http://192.168.1.4:3000/auth/reset-password/"
+export const BaseURL = "https://seo-api.acedigitalsolution.com/"
+export const URL_IMAGE = "https://seo-api.acedigitalsolution.com/uploads/"
+export const MAILER_LINK = "https://seo-crm-next.vercel.app/auth/reset-password/"
 
 // export const BaseURLLIVE = ""
 
