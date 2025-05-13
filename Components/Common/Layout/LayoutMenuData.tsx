@@ -124,6 +124,7 @@ const Navdata = () => {
         },
     ];
 
+
     const seoExecutiveMenuItems = [
         { label: "Menu", isHeader: true },
         {
@@ -169,7 +170,7 @@ const Navdata = () => {
         },
     ];
 
-    const menuItems = loggedIn?.role === "ADMIN"
+    const menuItems = loggedIn?.role === "ADMIN" || "SUPER_ADMIN"
         ? adminMenuItems
         : loggedIn?.role === "SEO_EXECUTIVE"
         ? seoExecutiveMenuItems
