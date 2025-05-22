@@ -4,6 +4,8 @@ import Router from "next/router";
 const Navdata = () => {
     const [isSeoPages, setIsSeoPages] = useState(false);
     const [isBlog, setIsBlog] = useState(false);
+    const [isArticulos, setIsArticulos] = useState(false);
+
     const [isSites, setIsSites] = useState(false);
     const [isAddSite, setIsAddSite] = useState(false);
     const [isCurrentState, setIsCurrentState] = useState('');
@@ -97,6 +99,21 @@ const Navdata = () => {
                         { id: 1, label: "Add", link: "/seo/add-blog" },
                     ]
                 },
+                  {
+                    id: "add-articulos",
+                    label: "Add Articulos",
+                    link: "/#",
+                    isChildItem: true,
+                    click: (e: any) => {
+                        e.preventDefault();
+                        setIsArticulos(!isArticulos);
+                    },
+                    parentId: "seo",
+                    stateVariables: isArticulos,
+                    childItems: [
+                        { id: 1, label: "Add", link: "/seo/add-articulos" },
+                    ]
+                },
             ],
         },
         {
@@ -165,6 +182,66 @@ const Navdata = () => {
                     stateVariables: isBlog,
                     childItems: [
                         { id: 1, label: "Add", link: "/seo/add-blog" },
+                    ]
+                },
+                  {
+                    id: "add-articulos",
+                    label: "Add Articulos",
+                    link: "/#",
+                    isChildItem: true,
+                    click: (e: any) => {
+                        e.preventDefault();
+                        setIsArticulos(!isArticulos);
+                    },
+                    parentId: "seo",
+                    stateVariables: isArticulos,
+                    childItems: [
+                        { id: 1, label: "Add", link: "/seo/add-articulos" },
+                    ]
+                },
+            ],
+        },
+        {
+            id: "seo",
+            label: "SEO",
+            icon: "bi bi-person-circle",
+            link: "/#",
+            click: (e: any) => {
+                e.preventDefault();
+                setIsSeoPages(!isSeoPages);
+                setIsCurrentState("SeoPages");
+                updateIconSidebar(e);
+            },
+            stateVariables: isSeoPages,
+            subItems: [
+                {
+                    id: "add-blogs",
+                    label: "Add Blogs",
+                    link: "/#",
+                    isChildItem: true,
+                    click: (e: any) => {
+                        e.preventDefault();
+                        setIsBlog(!isBlog);
+                    },
+                    parentId: "seo",
+                    stateVariables: isBlog,
+                    childItems: [
+                        { id: 1, label: "Add", link: "/seo/add-blog" },
+                    ]
+                },
+                {
+                    id: "add-articulos",
+                    label: "Add Articulos",
+                    link: "/#",
+                    isChildItem: true,
+                    click: (e: any) => {
+                        e.preventDefault();
+                        setIsArticulos(!isArticulos);
+                    },
+                    parentId: "seo",
+                    stateVariables: isArticulos,
+                    childItems: [
+                        { id: 1, label: "Add", link: "/seo/add-articulos" },
                     ]
                 },
             ],

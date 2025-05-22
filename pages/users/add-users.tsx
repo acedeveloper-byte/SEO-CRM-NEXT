@@ -1,7 +1,5 @@
 import React, { ReactElement } from "react";
 import Head from "next/head";
-// import ReactForm from "../../Components/pages_componets/category/form";
-// import Categorytable from "./../../Components/pages_componets/category/categorytable";
 import Layout from "@common/Layout";
 import ReactForm from "Components/pages_component/auth/form";
 import Usertable from "Components/pages_component/auth/usertable";

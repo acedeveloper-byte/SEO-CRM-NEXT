@@ -56,7 +56,21 @@ export const GetAllUser = () => async (dispatch: any) => {
     };
 
     axios.request(options).then(function (response: any) {
-        console.log(response);
+       if (response.baseResponse.status === "OK") {
+
+            Swal.fire({
+                title: "Good job!",
+                text: response.baseResponse.message,
+                icon: "success"
+            });
+        } else {
+            Swal.fire({
+                title: "Oops!",
+                text: response.baseResponse.message,
+                icon: "error"
+            });
+
+        }
         dispatch(setsuccessinSideUserdata(response.response))
     }).catch(function (error) {
         console.error(error);

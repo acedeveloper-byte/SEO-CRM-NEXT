@@ -53,7 +53,6 @@ export const GetAllSites = () => async (dispatch: any) => {
     };
 
     axios.request(options).then(function (response  : any) {
-        console.log(response);
         dispatch(setsuccesssitesdata(response.response))
     }).catch(function (error) {
         console.error(error);

@@ -10,7 +10,7 @@ const Index_Category = () => {
     return (
         <React.Fragment>
             <Head>
-                <title>Index_Category | Lavya -Admin </title>
+                <title>Index_Category | Ace Digital Solutions </title>
             </Head>
             <div className="page-content">
                 <ReactForm />

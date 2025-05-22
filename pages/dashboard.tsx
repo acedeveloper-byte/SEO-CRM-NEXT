@@ -16,11 +16,17 @@ import StockReport from '@component/Dashboard/StockReport';
 import TopRetailSalesLocation from '@component/Dashboard/TopRetailSalesLocation';
 
 const Dashboard = () => {
+
+    
     return (
         <React.Fragment>
             <Head>
                 <title>Dashboard | Hybrix - Admin & Dashboard Template</title>
             </Head>
+    
+    
+        <img src="https://www.myhousingsearch.com/WebFile?id=2873479" />
+        
             <div className="page-content">
                 <Container fluid>
                     <Row>

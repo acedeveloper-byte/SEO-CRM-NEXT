@@ -6,8 +6,8 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 // import { PostCategory } from "Components/slices/category/thunk";
 import { Card, Col, Row } from "react-bootstrap";
-import { SubmitBlog } from "Components/slices/blog/thunk";
 import { GetAllSites } from "Components/slices/sites/thunk";
+import { SubmitArticulos } from "Components/slices/articulos/thunk";
 
 const ReactForm = () => {
     const dispatch: any = useDispatch();
@@ -17,7 +17,7 @@ const ReactForm = () => {
     const [editor, setEditor] = useState(false);
     const { CKEditor, ClassicEditor }: any = editorRef.current || {};
     const { sitesdata } = useSelector((state: any) => ({
-        sitesdata: state.Sites.sitesdata,
+            sitesdata: state.Sites.sitesdata,
     }));
     
     const formik: any = useFormik({
@@ -27,11 +27,11 @@ const ReactForm = () => {
             focus_keywords: "",
             meta_description: "",
             category: "",
-            blog_url: "",
-            blog_image_tag: "",
+            articulos_url: "",
+            articulos_image_tag: "",
             title_tag_h1: "",
-            blog_description: "",
-            blog_images: "",
+            articulos_description: "",
+            articulos_images: "",
             user_id: user.id,
             siteId: ""
         },
@@ -40,17 +40,17 @@ const ReactForm = () => {
             focus_keywords: Yup.string().required("Focus keywords are required."),
             meta_description: Yup.string().required("Meta description is required."),
             category: Yup.string().required("Category is required."),
-            blog_url: Yup.string().required("Blog URL is required."),
-            blog_image_tag: Yup.string().required("Blog image tag is required."),
+            articulos_url: Yup.string().required("articulos URL is required."),
+            articulos_image_tag: Yup.string().required("articulos image tag is required."),
             title_tag_h1: Yup.string().required("Title tag (H1) is required."),
-            blog_description: Yup.string().required("Blog description is required."),
-            blog_images: Yup.mixed().required("Please upload a blog image."),
+            articulos_description: Yup.string().required("articulos description is required."),
+            articulos_images: Yup.mixed().required("Please upload a articulos image."),
             siteId: Yup.mixed().required("Please select Site you wish to add this content."),
 
         }),
 
         onSubmit: (values) => {
-            dispatch(SubmitBlog(values)); // Replace with actual thunk or API call
+            dispatch(SubmitArticulos(values)); // Replace with actual thunk or API call
             formik.resetForm();
 
         },
@@ -90,36 +90,36 @@ const ReactForm = () => {
                         }}
                     >
                         <div className="d-flex flex-column gap-2 m-3">
-                            <Form.Group controlId="blog_images">
-                                <Form.Label className="form-label">Select Blog Image</Form.Label>
+                            <Form.Group controlId="articulos_images">
+                                <Form.Label className="form-label">Select articulos Image</Form.Label>
                                 <div className="d-flex align-items-center gap-2">
                                     <Button
                                         variant="light"
                                         className="border d-flex align-items-center gap-2"
-                                        onClick={() => document.getElementById("hidden-blog-image")?.click()}
+                                        onClick={() => document.getElementById("hidden-articulos-image")?.click()}
                                     >
                                         <i className="ri-image-fill"></i> Upload Image
                                     </Button>
-                                    {formik.values.blog_images && typeof formik.values.blog_images === "object" && (
+                                    {formik.values.articulos_images && typeof formik.values.articulos_images === "object" && (
                                         <span className="text-muted">
-                                            {formik.values.blog_images.name}
+                                            {formik.values.articulos_images.name}
                                         </span>
                                     )}
                                 </div>
 
                                 <Form.Control
                                     type="file"
-                                    id="hidden-blog-image"
-                                    name="blog_images"
+                                    id="hidden-articulos-image"
+                                    name="articulos_images"
                                     className="d-none"
                                     accept="image/png, image/jpeg, image/gif"
                                     onChange={(e: any) => {
-                                        formik.setFieldValue("blog_images", e.currentTarget.files?.[0]);
+                                        formik.setFieldValue("articulos_images", e.currentTarget.files?.[0]);
                                     }}
-                                    isInvalid={formik.touched.blog_images && !!formik.errors.blog_images}
+                                    isInvalid={formik.touched.articulos_images && !!formik.errors.articulos_images}
                                 />
                                 <Form.Control.Feedback type="invalid">
-                                    {formik.errors.blog_images}
+                                    {formik.errors.articulos_images}
                                 </Form.Control.Feedback>
                             </Form.Group>
                         </div>
@@ -231,42 +231,42 @@ const ReactForm = () => {
 
                                 <Col md={6}>
                                     <Form.Group>
-                                        <Form.Label htmlFor="blog_url">Blog URL</Form.Label>
+                                        <Form.Label htmlFor="articulos_url">articulos URL</Form.Label>
                                         <Form.Control
-                                            name="blog_url"
-                                            id="blog_url"
-                                            placeholder="Enter Blog URL"
+                                            name="articulos_url"
+                                            id="articulos_url"
+                                            placeholder="Enter articulos URL"
                                             type="url"
-                                            value={formik.values.blog_url}
+                                            value={formik.values.articulos_url}
                                             onChange={(e: any) => {
                                                 const replacetext = e.target.value.replaceAll(" ", "-")
                                                 var a = replacetext.toLowerCase()
-                                                formik.setFieldValue("blog_url", a)
+                                                formik.setFieldValue("articulos_url", a)
                                             }}
                                             onBlur={formik.handleBlur}
-                                            isInvalid={formik.touched.blog_url && !!formik.errors.blog_url}
+                                            isInvalid={formik.touched.articulos_url && !!formik.errors.articulos_url}
                                         />
                                         <Form.Control.Feedback type="invalid">
-                                            {formik.errors.blog_url}
+                                            {formik.errors.articulos_url}
                                         </Form.Control.Feedback>
                                     </Form.Group>
                                 </Col>
 
                                 <Col md={6}>
                                     <Form.Group>
-                                        <Form.Label htmlFor="blog_image_tag">Blog Image Tag</Form.Label>
+                                        <Form.Label htmlFor="articulos_image_tag">articulos Image Tag</Form.Label>
                                         <Form.Control
-                                            name="blog_image_tag"
-                                            id="blog_image_tag"
-                                            placeholder="Enter Blog Image Tag"
+                                            name="articulos_image_tag"
+                                            id="articulos_image_tag"
+                                            placeholder="Enter articulos Image Tag"
                                             type="text"
-                                            value={formik.values.blog_image_tag}
+                                            value={formik.values.articulos_image_tag}
                                             onChange={formik.handleChange}
                                             onBlur={formik.handleBlur}
-                                            isInvalid={formik.touched.blog_image_tag && !!formik.errors.blog_image_tag}
+                                            isInvalid={formik.touched.articulos_image_tag && !!formik.errors.articulos_image_tag}
                                         />
                                         <Form.Control.Feedback type="invalid">
-                                            {formik.errors.blog_image_tag}
+                                            {formik.errors.articulos_image_tag}
                                         </Form.Control.Feedback>
                                     </Form.Group>
                                 </Col>
@@ -295,28 +295,28 @@ const ReactForm = () => {
                             <Col>
                                 <div>
                                     <Form.Label htmlFor="name" className="form-label">
-                                        BLog Description
+                                        articulos Description
                                     </Form.Label>
                                     {editor ? (
                                         <CKEditor
                                             editor={ClassicEditor}
-                                            data={formik.values.blog_description}
+                                            data={formik.values.articulos_description}
                                             onReady={(editor: any) => {
                                                 // You can store the "editor" and use when it is needed.
                                             }}
                                             onChange={(event: any, editor: any) => {
                                                 const data = editor.getData();
 
-                                                formik.setFieldValue("blog_description", data);
+                                                formik.setFieldValue("articulos_description", data);
                                             }}
                                         />
                                     ) : (
                                         <p>ckeditor5</p>
                                     )}
-                                    {formik.touched.blog_description &&
-                                        formik.errors.blog_description ? (
+                                    {formik.touched.articulos_description &&
+                                        formik.errors.articulos_description ? (
                                         <Form.Control.Feedback type="invalid">
-                                            {formik.errors.blog_description}
+                                            {formik.errors.articulos_description}
                                         </Form.Control.Feedback>
                                     ) : null}
                                 </div>

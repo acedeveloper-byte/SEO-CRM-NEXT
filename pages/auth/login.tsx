@@ -130,7 +130,7 @@ const Login = (props: any) => {
                                                     <div className="text-center text-white-75">
                                                         <p className="mb-0">©
                                                             {new Date().getFullYear()}{" "}
-                                                            Hybrix. Crafted with <i className="mdi mdi-heart text-danger"></i> by Themesbrand
+                                                             Crafted with <i className="mdi mdi-heart text-danger"></i> by Ace digtial solutions
                                                         </p>
                                                     </div>
                                                 </Card.Body>
@@ -142,7 +142,7 @@ const Login = (props: any) => {
                                                 <Card.Body className="px-0 p-sm-5 m-lg-4">
                                                     <div className="text-center mt-2">
                                                         <h5 className="text-primary fs-20">Welcome Back !</h5>
-                                                        <p className="text-muted">Sign in to continue to Hybrix.</p>
+                                                        <p className="text-muted">Sign in to continue </p>
                                                     </div>
                                                     {error && error ? (<Alert variant="danger"> {error} </Alert>) : null}
                                                     <div className="p-2 mt-5">

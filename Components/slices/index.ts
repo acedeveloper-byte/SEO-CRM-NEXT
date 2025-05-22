@@ -21,6 +21,7 @@ import AccountReducer from "./auth/register/reducer";
 import ForgetPasswordReducer from "./auth/forgetpwd/reducer";
 import ProfileReducer from "./auth/profile/reducer";
 import blogSlice from "../slices/blog/reducer"
+import articulosSlice from "../slices/articulos/reducer"
 import sitesSlice from "../slices/sites/reducer"
 import inSideUserSlice from "../slices/user/reducer"
 
@@ -37,7 +38,8 @@ const combinedReducer = combineReducers({
     Dashboard: dashboardslice,
     Blog : blogSlice,
     Sites:sitesSlice,
-    inUser:inSideUserSlice
+    inUser:inSideUserSlice,
+    Articulos: articulosSlice
 });
 
 const reducer = (state: any, action: AnyAction) => {
