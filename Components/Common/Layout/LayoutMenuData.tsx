@@ -201,51 +201,7 @@ const Navdata = () => {
                 },
             ],
         },
-        {
-            id: "seo",
-            label: "SEO",
-            icon: "bi bi-person-circle",
-            link: "/#",
-            click: (e: any) => {
-                e.preventDefault();
-                setIsSeoPages(!isSeoPages);
-                setIsCurrentState("SeoPages");
-                updateIconSidebar(e);
-            },
-            stateVariables: isSeoPages,
-            subItems: [
-                {
-                    id: "add-blogs",
-                    label: "Add Blogs",
-                    link: "/#",
-                    isChildItem: true,
-                    click: (e: any) => {
-                        e.preventDefault();
-                        setIsBlog(!isBlog);
-                    },
-                    parentId: "seo",
-                    stateVariables: isBlog,
-                    childItems: [
-                        { id: 1, label: "Add", link: "/seo/add-blog" },
-                    ]
-                },
-                {
-                    id: "add-articulos",
-                    label: "Add Articulos",
-                    link: "/#",
-                    isChildItem: true,
-                    click: (e: any) => {
-                        e.preventDefault();
-                        setIsArticulos(!isArticulos);
-                    },
-                    parentId: "seo",
-                    stateVariables: isArticulos,
-                    childItems: [
-                        { id: 1, label: "Add", link: "/seo/add-articulos" },
-                    ]
-                },
-            ],
-        },
+       
     ];
 
     const menuItems = loggedIn?.role === "ADMIN"|| loggedIn?.role === "SUPER_ADMIN"
