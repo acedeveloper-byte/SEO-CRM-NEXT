@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { useRouter } from "next/router";
 import { MdEditNote } from "react-icons/md";
-import { GetAllBlogs } from "Components/slices/blog/thunk";
 import { URL_IMAGE } from "Components/helpers/url_helper";
 import { GetAllArticulos } from "Components/slices/articulos/thunk";
 
@@ -17,15 +16,15 @@ const Articulosdatatable = () => {
   const dispatch: any = useDispatch();
   const router = useRouter();
   const [showSubCategory, setShowSubCategory] = useState<boolean>(false);
-  const { categorydata } = useSelector((state: any) => ({
-    categorydata: state.Blog.blogdata,
+  const { articulosdata } = useSelector((state: any) => ({
+    articulosdata: state.Articulos.articulosdata,
   }));
 
   const columns = useMemo(
     () => [
         {
-            Header: "Blog Image",
-            accessor: "blog_images",
+            Header: "articulos Image",
+            accessor: "articulos_images",
             disableFilters: true,
             filterable: true,
             Cell: ({ cell }: any) => {
@@ -37,8 +36,8 @@ const Articulosdatatable = () => {
           
               return (
                 <img
-                  src={`${URL_IMAGE}${imageUrl}`}
-                  alt="Blog"
+                  src={`${URL_IMAGE}articulos/${imageUrl}`}
+                  alt="articulos"
                   style={{ width: 50, height: 50, objectFit: "cover", borderRadius: "4px" }}
                 />
               );
@@ -69,14 +68,14 @@ const Articulosdatatable = () => {
         filterable: true,
       },
       {
-        Header: "Blog URL",
-        accessor: "blog_url",
+        Header: "articulos URL",
+        accessor: "articulos_url",
         disableFilters: true,
         filterable: true,
       },
       {
-        Header: "Blog Image Tag",
-        accessor: "blog_image_tag",
+        Header: "articulos Image Tag",
+        accessor: "articulos_image_tag",
         disableFilters: true,
         filterable: true,
       },
@@ -87,8 +86,8 @@ const Articulosdatatable = () => {
         filterable: true,
       },
       {
-        Header: "Blog Description",
-        accessor: "blog_description",
+        Header: "articulos Description",
+        accessor: "articulos_description",
         disableFilters: true,
         filterable: true,
       },
@@ -129,7 +128,7 @@ const Articulosdatatable = () => {
     <Col xl={12}>
       <Card>
         <Card.Header className="align-items-center d-flex mb-n2">
-          <h4 className="card-title mb-0 flex-grow-1">Blog data</h4>
+          <h4 className="card-title mb-0 flex-grow-1">articulos data</h4>
           <div className="flex-shrink-0">
             <Dropdown className="card-header-dropdown">
               <Dropdown.Toggle
@@ -159,7 +158,7 @@ const Articulosdatatable = () => {
         {/* <Card.Body> */}
         <TableContainer
           columns={columns || []}
-          data={categorydata || []}
+          data={articulosdata || []}
           isGlobalFilter={false}
           iscustomPageSize={false}
           isBordered={false}
